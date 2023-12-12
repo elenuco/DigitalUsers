@@ -1,5 +1,7 @@
 package com.Usuarios.usuarios.Controllers;
 
+import com.Usuarios.usuarios.dao.UsuarioDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class UsuariosController {
+public class UsuariosController  {
+    @Autowired
+    private UsuarioDao usuarioDao;
     @RequestMapping(value="Usuarios/{IDUsuarios}")
     public Usuarios getUsuario(@PathVariable Long IdUsuarios) {
         Usuarios Usuarios= new Usuarios();
@@ -26,27 +30,7 @@ public class UsuariosController {
     //@RequestMapping(method = RequestMethod.GET)
     public List<Usuarios> getUsuarios() {
         List<Usuarios> usuarios = new ArrayList<>();
-
-        Usuarios usuario = new Usuarios();
-        usuario.setIDUsuarios(1L); // Cambiado el ID a 1L
-        usuario.setNombre("Usuario");
-        usuario.setUsuario("Usuario0");
-        usuario.setCorreoElectronico("CorreoElectronico");
-        usuario.setTelefono("Telefono");
-        usuario.setDireccion("Direccion");
-
-        Usuarios usuario2 = new Usuarios();
-        usuario2.setIDUsuarios(2L);
-        usuario2.setNombre("Usuario2");
-        usuario2.setUsuario("Usuario1");
-        usuario2.setCorreoElectronico("CorreoElectronico2");
-        usuario2.setTelefono("Telefono2");
-        usuario2.setDireccion("Direccion2");
-
-        usuarios.add(usuario);
-        usuarios.add(usuario2);
-
-        return usuarios;
+        return usuarioDao.getUsuarios();
     }
 
     @RequestMapping(value="Usuarios/updateUsuario")

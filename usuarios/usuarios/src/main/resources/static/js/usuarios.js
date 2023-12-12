@@ -12,10 +12,15 @@ const request = await fetch('usuarios} ', {
   }
 });
 const usuarios= await request.json();
-
+ let listadoHtml = '';
 for (let usuario of usuarios) {
-let usuarioHtml='<td>0</td><td>Usuario Usuario</td><td>Usuario</td><td>Usuario@usuario.com</td><td>Aloha St.</td><td>222-3333-3333</td><td><a href="#" class="btn btn-warning btn-circle"><i class="fas fa-exclamation-triangle"></i></a><a href="#" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';
+let usuarioHtml = '<tr><td>'+usuario.IDUsuarios+'</td><td>'
+                  + usuario.Nombre +'</td><td>'+
+                  usuario.Usuario+'</td><td>'+
+                  usuario.CorreoElectronico+ '</td><td>'+
+                  usuario.Telefono+ '</td></tr>';
+    listadoHtml += usuarioHtml;
 }
 
-document.querySelector('#usuarios tbody').outerHTML = usuario;
+document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
 }
