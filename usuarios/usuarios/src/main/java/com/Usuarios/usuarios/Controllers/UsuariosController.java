@@ -23,26 +23,30 @@ public class UsuariosController {
     }
 
     @RequestMapping(value="Usuarios")
-    public  List<Usuarios> getUsuario(@PathVariable Long IdUsuarios) {
-        List <Usuarios>usuarios=new ArrayList<>();
-        Usuarios Usuarios= new Usuarios();
-        Usuarios.setIDUsuarios(IdUsuarios);
-        Usuarios.setNombre("Usuario");
-        Usuarios.setUsuario("Usuario0");
-        Usuarios.setCorreoElectronico("CorreoElectronico");
-        Usuarios.setTelefono("Telefono");
-        Usuarios.setDireccion("Direccion");
-        Usuarios Usuarios2= new Usuarios();
-        Usuarios2.setIDUsuarios(IdUsuarios);
-        Usuarios2.setNombre("Usuario");
-        Usuarios2.setUsuario("Usuario0");
-        Usuarios2.setCorreoElectronico("CorreoElectronico");
-        Usuarios2.setTelefono("Telefono");
-        Usuarios2.setDireccion("Direccion");
-        usuarios.add(usuario1);
+    //@RequestMapping(method = RequestMethod.GET)
+    public List<Usuarios> getUsuarios() {
+        List<Usuarios> usuarios = new ArrayList<>();
 
+        Usuarios usuario = new Usuarios();
+        usuario.setIDUsuarios(1L); // Cambiado el ID a 1L
+        usuario.setNombre("Usuario");
+        usuario.setUsuario("Usuario0");
+        usuario.setCorreoElectronico("CorreoElectronico");
+        usuario.setTelefono("Telefono");
+        usuario.setDireccion("Direccion");
 
-        return Usuarios;
+        Usuarios usuario2 = new Usuarios();
+        usuario2.setIDUsuarios(2L);
+        usuario2.setNombre("Usuario2");
+        usuario2.setUsuario("Usuario1");
+        usuario2.setCorreoElectronico("CorreoElectronico2");
+        usuario2.setTelefono("Telefono2");
+        usuario2.setDireccion("Direccion2");
+
+        usuarios.add(usuario);
+        usuarios.add(usuario2);
+
+        return usuarios;
     }
 
     @RequestMapping(value="Usuarios/updateUsuario")
